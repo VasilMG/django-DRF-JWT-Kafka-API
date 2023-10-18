@@ -22,6 +22,8 @@ RUN wget -q "https://dlcdn.apache.org/kafka/${KAFKA_VERSION}/kafka_${KAFKA_SCALA
 
 COPY ./docker-init-kafka-server.sh .
 
+# RUN sed -i 's/\r$//' ./docker-init-kafka-server.sh
+
 CMD exec /bin/bash ./docker-init-kafka-server.sh
 
 
