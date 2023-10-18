@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+    api:
+        container_name: django-api
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        environment:
+            - KAFKA_HOST=kafka-api
+            - DB_HOST=db
+        ports:
+            - "8000:8000"
+        restart: on-failure
+        networks:
+            - api-network
+        depends_on:
+          - kafka
+          - db
+    kafka:
+        container_name: kafka-api
+        build:
+            context: ./kafka
+            dockerfile: Dockerfile
+        ports:
+            - "9092:9092"
+        restart: on-failure
+        networks:
+            - api-network
+    db:
+        container_name: db
+        image: postgres
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=pass123
+        ports:
+          - "5432:5432"
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        networks:
+            - api-network
+
+volumes:
+    pgdata:
+networks:
+    api-network:
