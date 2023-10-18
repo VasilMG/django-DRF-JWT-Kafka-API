@@ -30,7 +30,7 @@ To run this project, follow these steps:
 
    ```bash
    docker-compose up -d
-
+- if you are running Windows on your machine please make sure to uncomment the commands I've written in the Dockerfiles (kafka/Dockerfile) and the app's dockerfice ./Dockerfile
 2. After that you will be able to access the app's documentation on localhost:8000/api/v1/swagger-schema/
 3. During the installation process 2 users are created - you can see theri credentials in --> InterviewSystem/interview_app/management/commands/create_users.py
 4. Choose a user and make a post request to localhost:8000/access/ to receive an access token or just use the swagger documentation to authenticate and make requests to the endpionts
