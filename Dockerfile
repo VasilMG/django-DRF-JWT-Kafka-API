@@ -17,6 +17,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+#RUN sed -i 's/\r$//' ./start_api.sh
+
 EXPOSE 8000
 
 CMD exec /bin/bash ./start_api.sh

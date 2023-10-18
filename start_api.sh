@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x;
 
-sleep 5
+sleep 10
 
 python manage.py create_kafka_topics
 
