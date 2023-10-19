@@ -37,8 +37,9 @@ class ScheduledInterviewViewSet(viewsets.ModelViewSet, JSONWebTokenAuthenticatio
     serializer_class = InterviewSerializer
 
 @api_view(['GET'])
-@authentication_classes([JSONWebTokenAuthentication])
-@permission_classes([IsAuthenticated])
+# @authentication_classes([JSONWebTokenAuthentication])
+# @permission_classes([IsAuthenticated])
+@permission_classes([permissions.AllowAny,])
 def get_sent_emails(request):
     if request.method == 'GET':
         queryset = SentEmail.objects.all()

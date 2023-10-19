@@ -109,13 +109,15 @@ class Feedback(models.Model):
 @receiver(post_save, sender=Feedback)
 def send_message_for_new_candidate(sender, instance, **kwargs):
     if kwargs.get('created', False):
+        # candidate_producer.send(topic="InterviewChange", value={"id": instance.id,
+        #                         "interviewer": instance.interviewer,
+        #                         "interview": instance.interview,
+        #                         "feedback": instance.feedback_text})
         candidate_producer.send(topic="InterviewChange", value={"id": instance.id,
-                                "interview_date": str(instance.interview_date),
-                                "interviewer": instance.interviewer,
-                                "status": instance.status,
-                                "candidate": instance.candidate.name
-                                                                } )
+                                                                "interviewer": instance.interviewer,
+                                                                "feedback_text": instance.feedback_text  })
         candidate_producer.flush()
+
 
 class FeedbackPermission(permissions.BasePermission):
     def has_permission(self, request, view):
