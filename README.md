@@ -1,8 +1,6 @@
 # django-DRF-JWT-Postgres-API
 Django API using - Django Rest Framework, JWT Auth, Postgres DB, Apache Kafka
 
-# Project Name README
-
 ## Table of Contents
 
 - [Description](#description)
