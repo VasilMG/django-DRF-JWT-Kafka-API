@@ -1,7 +1,5 @@
 # django-DRF-JWT-Postgres-API
-Django API using - Django Rest Framework, JWT Auth and Postgres DB
-
-# Project Name README
+Django API using - Django Rest Framework, JWT Auth, Postgres DB, Apache Kafka
 
 ## Table of Contents
 
@@ -35,6 +33,7 @@ To run this project, follow these steps:
 3. During the installation process 2 users are created - you can see theri credentials in --> InterviewSystem/interview_app/management/commands/create_users.py
 4. Choose a user and make a post request to localhost:8000/access/ to receive an access token or just use the swagger documentation to authenticate and make requests to the endpionts
 5. Users can be created only through the django admin panel - you must run --> python manage.py createsuperuser  before you can access the admin panel at  localhost:8000/admin/
+6. I have made a public endpoint /api/emails where we can see all the messages comming from Kafka brokers.
 
 ## Usage
 After successfully installing the project, you can access the API and start making requests.
@@ -47,5 +46,8 @@ API base URL: http://localhost:8000/access/
 ## API Documentation
 To access the API documentation, visit the Swagger schema:
 API Documentation: http://localhost:8000/api/v1/swagger-schema/
-
+- Make a post request with email and password of the pre-built users. You can find the users in interview_app/management/commands/create_users.py
+- You will receive 2 tokens. Copy the value of 'access' token and go the the upper left button Authorize
+- In the field FIRST type 'Bearer' followed by a space and THEN paste the value of the token. eg. Bearer <token_value>
+- And you are good to go and make requests to the api. 
 
